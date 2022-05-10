@@ -91,3 +91,32 @@ div {
         background-color: red;
         @include border-stroke(medium);
 }
+
+/* Usando @for para un loop de SASS*/
+/* IMPORTANTE: "start to end" excluye el último numero de la secuencia. "start through end" incluye el último número de la secuencia de conteo del for.*/
+
+@for $i from 1 through 12 { /* desde el principio "hasta" el fin, es decir, incluye el último número de la secuencia a contar*/
+    .col-#{$i} { width: 100%/12 * $i; }
+}
+
+/*La parte #{$i} es la sintaxis para combinar una variable (i) con texto para hacer una cadena. Cuando el archivo Sass se convierte en CSS, tiene este aspecto:*/
+
+.col-1 {
+    width: 8.33333%;
+  }
+  
+  .col-2 {
+    width: 16.66667%;
+  }
+  
+  ...
+  
+  .col-12 {
+    width: 100%;
+}
+/*Esta es una manera poderosa de crear un diseño de cuadrícula (grid). Ahora tienes doce opciones de ancho de columna disponibles como clases CSS.*/
+
+/*Otro ejemplo de utilización de @for para crear distintas clases de texto. En este caso uso "from to"*/
+@for $j from 1 to 6{
+    .text-#{$j}{ font-size:15px*$j}
+}
