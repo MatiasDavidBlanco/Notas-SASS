@@ -140,3 +140,27 @@ $x:1;
   .text-#{$x}{font-size:15px*$x;}
   $x: $x + 1;
 }
+
+/*Divide tus estilos en trozos más pequeños con PARCIALES */
+
+/*Parciales en Sass son archivos separados que contienen segmentos de código CSS. Estos se importan y son utilizados en otros archivos Sass. Esta es una gran manera de agrupar código similar en un módulo para mantenerlo organizado.
+
+Los nombres de los parciales comienzan con el carácter de guión bajo (_), que le dice a Sass que es un pequeño segmento de CSS y no para convertirlo en un archivo CSS. También, los archivos Sass terminan con la extensión de archivo .scss. Para introducir el código en el parcial en otro archivo Sass, utiliza la directiva @import.
+
+Por ejemplo, si todos tus mixins se guardan en un parcial llamado "_mixins.scss", y son necesarios en el archivo "main.scss", es cómo usarlos en el archivo principal:*/
+
+@import 'mixins'
+
+
+/*Hereda un conjunto de estilos CSS a otro elemento con @extend*/
+.info{
+    width: 200px;
+    border: 1px solid black;
+    margin: 0 auto;
+  }
+
+  .info-important{
+    @extend .info; /*Aqui uso @extend para copiar los estilos css de .info a .info-important sin necesidad de reescribir todo*/
+    background-color:magenta;
+
+}
