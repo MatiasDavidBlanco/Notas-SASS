@@ -1,0 +1,12 @@
+<!-- Almacenar datos con variables SASS-->
+
+$main-fonts: Arial, sans-serif;
+$headings-color: green;
+
+<!-- Para usar variables SASS-->
+
+h1 {
+    font-family: $main-fonts;
+    color: $headings-color;
+}
+
