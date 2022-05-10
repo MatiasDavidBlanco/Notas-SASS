@@ -1,12 +1,72 @@
-<!-- Almacenar datos con variables SASS-->
+/* Almacenar datos con variables SASS*/
 
 $main-fonts: Arial, sans-serif;
 $headings-color: green;
 
-<!-- Para usar variables SASS-->
+/* Para usar variables SASS*/
 
 h1 {
     font-family: $main-fonts;
     color: $headings-color;
 }
 
+/*Anidar CSS con SASS*/
+/*Normalmente con CSS se pone un una linea diferente el estilo para cada elemento*/
+
+nav {
+    background-color: red;
+  }
+  
+  nav ul {
+    list-style: none;
+  }
+  
+  nav ul li {
+    display: inline-block;
+  }
+
+/*pero con SAAS, es posible organizar de forma anidada los estilos de los elementos hijos bajo su padre*/
+
+nav {
+    background-color: red;
+  
+    ul {
+      list-style: none;
+  
+      li {
+        display: inline-block;
+      }
+    }
+}
+
+/*Crear CSS reutilizable con SASS a través de MIXINS*/
+/* Un MIXIN es como una función de JS. Permite agrupar reglas CSS para ser reutilizadas sin  necesidad de volver a escribirlas*/
+
+@mixin box-shadow($x, $y, $blur, $c){ 
+    -webkit-box-shadow: $x $y $blur $c;
+    -moz-box-shadow: $x $y $blur $c;
+    -ms-box-shadow: $x $y $blur $c;
+    box-shadow: $x $y $blur $c;
+}
+
+/* La definición empieza con @mixin seguido de un nombre personalizado. Los parámetros ( $x, $y, $blur, y $c en el ejemplo anterior) son opcionales. Ahora cada vez que se necesite una regla box-shadow, una sola línea llamando al mixin reemplaza el tener que escribir todos los prefijos del proveedor. Se llama a un mixin con la directiva @include:*/
+
+div {
+    @include box-shadow(0px, 0px, 4px, #fff);
+}
+
+/*Otro ejemplo*/
+
+@mixin border-radius($radius){
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius:$radius;
+    box-shadow:$radius;
+}
+
+#awesome {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    @include border-radius(15px); /*Llamo el mixin*/
+}
