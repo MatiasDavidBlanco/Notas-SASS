@@ -61,7 +61,7 @@ div {
     -webkit-border-radius: $radius;
     -moz-border-radius: $radius;
     -ms-border-radius:$radius;
-    box-shadow:$radius;
+    border-radius:$radius;
 }
 
 #awesome {
@@ -69,4 +69,25 @@ div {
     height: 150px;
     background-color: green;
     @include border-radius(15px); /*Llamo el mixin*/
+}
+
+/*Con SASS se puede utilizar @if y @else para aplicar lógica mis estilos css junto con el uso de MIXINS*/
+
+@mixin border-stroke($val){ /* Creando un MIXIN llamado border-stroke que recibe un argumento $val*/
+    @if $val == light{
+      border: 1px solid black;
+    }@else if $val == medium{
+      border: 3px solid black;
+    }@else if $val == heavy{
+      border: 6px solid black;
+    }@else{
+      border:none;
+    }
+}
+
+#box { /*Llamando el MIXIN  border-stroke pasandole un argumento $val que se evalua en las condiciones lógicas*/
+        width: 150px;
+        height: 150px;
+        background-color: red;
+        @include border-stroke(medium);
 }
