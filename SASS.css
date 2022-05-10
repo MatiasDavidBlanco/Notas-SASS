@@ -120,3 +120,23 @@ div {
 @for $j from 1 to 6{
     .text-#{$j}{ font-size:15px*$j}
 }
+
+/*Usar @each para asignar elementos en una lista o mapa. Al igual que @for, @each hace un bucle sobre cada elemento de una lista o mapa. En cada iteración, la variable se asigna al valor actual de la lista o del mapa.*/
+
+@each $color in blue, red, green {
+    .#{$color}-text {color: $color;}
+}
+/*En caso de mapa*/
+$colors: (color1: blue, color2: red, color3: green);
+
+@each $key, $color in $colors {
+  .#{$color}-text {color: $color;}
+}
+
+/*Aplica un estilo hasta que se cumpla una condición con @while*/
+/*En el ejemplo se crear 5 clases diferentes de texto con un font size distinto*/
+$x:1;
+@while $x <=5{
+  .text-#{$x}{font-size:15px*$x;}
+  $x: $x + 1;
+}
